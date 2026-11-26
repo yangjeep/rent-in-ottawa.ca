@@ -5,9 +5,10 @@ export async function GET() {
   try {
     const listings = await fetchListings();
     // Return titles and record IDs for the dropdown
+    // Use listing.id (D1 row ID) instead of airtableRecordId
     const properties = listings.map((listing) => ({
       title: listing.title,
-      recordId: listing.airtableRecordId,
+      recordId: listing.id,
     }));
     return NextResponse.json(properties);
   } catch (error) {
